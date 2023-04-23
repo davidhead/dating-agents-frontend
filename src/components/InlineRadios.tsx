@@ -4,7 +4,7 @@ const notificationMethods = [
   { id: "push", title: "Push notification" },
 ];
 
-export default function Example() {
+export default function InlineRadios() {
   return (
     <div>
       <label className="text-base font-semibold text-gray-900">

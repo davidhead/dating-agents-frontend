@@ -4,8 +4,8 @@ import Invalid from "./Invalid";
 import { useState } from "react";
 
 interface TextInputProps {
-  value: string;
-  onInputChange: (value: string) => void;
+  value: any;
+  onInputChange: (value: any) => void;
   description?: string;
   placeholder?: string;
   helperText?: string;
