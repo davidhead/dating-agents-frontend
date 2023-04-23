@@ -1,18 +1,15 @@
+import Label from "./FormLabel";
+
 const notificationMethods = [
   { id: "email", title: "Email" },
   { id: "sms", title: "Phone (SMS)" },
   { id: "push", title: "Push notification" },
 ];
 
-export default function InlineRadios() {
+export default function InlineRadios({ label }) {
   return (
     <div>
-      <label className="text-base font-semibold text-gray-900">
-        Notifications
-      </label>
-      <p className="text-sm text-gray-500">
-        How do you prefer to receive notifications?
-      </p>
+      <Label label={label} />
       <fieldset className="mt-4">
         <legend className="sr-only">Notification method</legend>
         <div className="space-y-4 sm:flex sm:items-center sm:space-x-10 sm:space-y-0">

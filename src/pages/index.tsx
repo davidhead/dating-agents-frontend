@@ -9,7 +9,7 @@ const inter = Inter({ subsets: ["latin"] });
 export default function Home() {
   const [name, setName] = useState("");
   const [age, setAge] = useState();
-  const [lowAgePref, lowAgePref] = useState();
+  const [lowAgePref, setLowAgePref] = useState();
   const [highAgePref, setHighAgePref] = useState();
   const [gender, setGender] = useState(""); // string
   const [genderPref, setGenderPref] = useState(""); // array of strings
@@ -54,27 +54,25 @@ export default function Home() {
             value={highAgePref}
             onInputChange={setHighAgePref}
           />
-          <TextInput
-            label="First Name"
-            name="first_name"
-            id="first_name"
-            value={firstName}
-            onInputChange={setFirstName}
-          />
-          <TextInput
-            label="First Name"
-            name="first_name"
-            id="first_name"
-            value={firstName}
-            onInputChange={setFirstName}
+          <InlineRadios
+            label="Your Gender"
+            id="your_gender"
+            value={gender}
+            onInputChange={setGender}
           />
           <InlineRadios
-            label="First Name"
+            label="Gender Preferences"
+            id="gender_preferences"
+            value={genderPref}
+            onInputChange={setGenderPref}
+          />
+          {/* <InlineRadios
+            label="Location"
             name="first_name"
             id="first_name"
             value={firstName}
             onInputChange={setFirstName}
-          />
+          /> */}
         </div>
       </div>
     </main>
