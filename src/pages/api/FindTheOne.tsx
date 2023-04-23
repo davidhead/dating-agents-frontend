@@ -50,60 +50,7 @@ export default async function handler(req: any, res: any) {
       food,
     };
 
-    const sampleResult = {
-      result: [
-        {
-          conversation_id: 0,
-          new_conversation: [
-            {
-              message: "Yo, what's up?",
-              message_index: 0,
-              user: "Alice",
-            },
-            {
-              message:
-                "Hi there, I'm Alice! I'm doing great today, how about you?",
-              message_index: 1,
-              user: "Bob",
-            },
-            {
-              message:
-                "Hey there, Alice! I'm doing fantastic today, thank you for asking. What brings you here today?",
-              message_index: 2,
-              user: "Alice",
-            },
-          ],
-          potential_match_name: "Bob",
-          protagonist_name: "Alice",
-          score: 8.0,
-        },
-        {
-          conversation_id: 0,
-          new_conversation: [
-            {
-              message: "Yo, what's up?",
-              message_index: 0,
-              user: "Alice",
-            },
-            {
-              message:
-                "Hi there, I'm Alice! I'm doing great today, how about you?",
-              message_index: 1,
-              user: "Bob",
-            },
-            {
-              message:
-                "Hey there, Alice! I'm doing fantastic today, thank you for asking. What brings you here today?",
-              message_index: 2,
-              user: "Alice",
-            },
-          ],
-          potential_match_name: "Bob",
-          protagonist_name: "Alice",
-          score: 8.0,
-        },
-      ],
-    };
+    
 
     try {
       console.log("Sent API request:", form_data);

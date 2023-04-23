@@ -1,54 +1,93 @@
-/*
-  This example requires some changes to your config:
-  
-  ```
-  // tailwind.config.js
-  module.exports = {
-    // ...
-    plugins: [
-      // ...
-      require('@tailwindcss/forms'),
-    ],
-  }
-  ```
-*/
-const notificationMethods = [
-  { id: "email", title: "Email" },
-  { id: "sms", title: "Phone (SMS)" },
-  { id: "push", title: "Push notification" },
-];
+import React, { useState } from "react";
 
-export default function Example() {
-  return (
-    <div>
-      <label className="text-base font-semibold text-gray-900">
-        Notifications
-      </label>
-      <p className="text-sm text-gray-500">
-        How do you prefer to receive notifications?
-      </p>
-      <fieldset className="mt-4">
-        <legend className="sr-only">Notification method</legend>
-        <div className="space-y-4 sm:flex sm:items-center sm:space-x-10 sm:space-y-0">
-          {notificationMethods.map((notificationMethod) => (
-            <div key={notificationMethod.id} className="flex items-center">
-              <input
-                id={notificationMethod.id}
-                name="notification-method"
-                type="radio"
-                defaultChecked={notificationMethod.id === "email"}
-                className="h-4 w-4 border-gray-300 text-indigo-600 focus:ring-indigo-600"
-              />
-              <label
-                htmlFor={notificationMethod.id}
-                className="ml-3 block text-sm font-medium leading-6 text-gray-900"
-              >
-                {notificationMethod.title}
-              </label>
+const ConversationAccordion = () =>
+  // { conversations }
+  {
+    const [activeIndex, setActiveIndex] = useState(-1);
+
+    const handleClick = (index) => {
+      setActiveIndex(index === activeIndex ? -1 : index);
+    };
+
+    const conversations = {
+      result: [
+        {
+          conversation_id: 0,
+          new_conversation: [
+            {
+              message: "Yo, what's up?",
+              message_index: 0,
+              user: "Alice",
+            },
+            {
+              message:
+                "Hi there, I'm Alice! I'm doing great today, how about you?",
+              message_index: 1,
+              user: "Bob",
+            },
+            {
+              message:
+                "Hey there, Alice! I'm doing fantastic today, thank you for asking. What brings you here today?",
+              message_index: 2,
+              user: "Alice",
+            },
+          ],
+          potential_match_name: "Bob",
+          protagonist_name: "Alice",
+          score: 8.0,
+        },
+        {
+          conversation_id: 0,
+          new_conversation: [
+            {
+              message: "Yo, what's up?",
+              message_index: 0,
+              user: "Alice",
+            },
+            {
+              message:
+                "Hi there, I'm Alice! I'm doing great today, how about you?",
+              message_index: 1,
+              user: "Bob",
+            },
+            {
+              message:
+                "Hey there, Alice! I'm doing fantastic today, thank you for asking. What brings you here today?",
+              message_index: 2,
+              user: "Alice",
+            },
+          ],
+          potential_match_name: "Dan",
+          protagonist_name: "Alice",
+          score: 8.0,
+        },
+      ],
+    };
+
+    return (
+      <div className="accordion">
+        {conversations.result.map((conversation, index) => (
+          <div key={index} className="accordionItem">
+            <div className="accordionTitle" onClick={() => handleClick(index)}>
+              <span>
+                Conversation between {conversation.protagonist_name} and{" "}
+                {conversation.potential_match_name}
+              </span>
+              <span>{activeIndex === index ? "-" : "+"}</span>
             </div>
-          ))}
-        </div>
-      </fieldset>
-    </div>
-  );
-}
+            {activeIndex === index && (
+              <div className="accordionContent">
+                {conversation.new_conversation.map((message, msgIndex) => (
+                  <p key={msgIndex}>
+                    <strong>{message.user}:</strong> {message.message}
+                  </p>
+                ))}
+              </div>
+            )}
+          </div>
+        ))}
+      </div>
+    );
+  };
+
+export default ConversationAccordion;

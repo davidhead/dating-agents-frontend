@@ -8,6 +8,7 @@ import Checkboxes from "../components/Checkboxes";
 import Button from "../components/Button";
 import LoadingBar from "../components/LoadingBar";
 import axios from "axios";
+import Results from "../components/Results";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -89,7 +90,7 @@ export default function Home() {
         <h3 className="mt-10">First, Input your Preferences</h3>
         <div className="fixed bottom-0 left-0 h-48 w-full bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:h-auto lg:w-auto lg:bg-none">
           {findingLove === true ? (
-            <LoadingBar duration_seconds={45} message="Finding The One" />
+            <LoadingBar duration_seconds={100} message="Finding The One" />
           ) : (
             <form
               className="grid grid-flow-row rounded-md"
@@ -255,6 +256,7 @@ export default function Home() {
               <Button type="submit" label="Find ❤️ The One" />
             </form>
           )}
+          <Results />
         </div>
       </div>
     </main>
