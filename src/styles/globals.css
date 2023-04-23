@@ -63,13 +63,13 @@ body {
 }
 
 .accordionItem {
-  @apply mb-1 border rounded;
+  @apply mt-2 border rounded-lg;
 }
 
 .accordionTitle {
-  @apply flex text-center px-1 py-2 cursor-pointer font-bold bg-gray-300;
+  @apply flex text-center px-1 py-2 cursor-pointer font-bold bg-gray-100;
 }
 
 .accordionContent {
-  @apply p-2 border-t bg-white;
+  @apply p-2 pb-2 border-t bg-white;
 }
