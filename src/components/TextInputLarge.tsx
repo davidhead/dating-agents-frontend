@@ -1,12 +1,12 @@
 import HelperText from "./HelperText";
 import Label from "./FormLabel";
 import Invalid from "./Invalid";
-import CornerHint from "./CornerHint";
+// import CornerHint from "./CornerHint";
 import { useState } from "react";
 
 interface TextInputLargeProps {
-  value: string;
-  onInputChange: (value: string) => void;
+  value: any;
+  onInputChange: (value: any) => void;
   name?: string;
   rows?: number;
   placeholder?: string;
@@ -43,7 +43,7 @@ export default function TextInputLarge({
   return (
     <div>
       <Label label={label} />
-      <CornerHint message={hintMessage} />
+      {/* <CornerHint message={hintMessage} /> */}
       <div className="mt-1">
         <textarea
           id={id}

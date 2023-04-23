@@ -2,6 +2,7 @@
 import Label from "./FormLabel";
 import Invalid from "./Invalid";
 import { useState } from "react";
+import HelperText from "./HelperText"
 
 interface TextInputProps {
   value: any;
@@ -66,7 +67,7 @@ export default function TextInput({
         />
       </div>
       {invalidMessage ? <Invalid message={invalidMessage} /> : null}
-      {/* {helperText ? <HelperText helperText={helperText} /> : null} */}
+      {helperText ? <HelperText helperText={helperText} /> : null}
     </div>
   );
 }

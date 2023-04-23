@@ -8,6 +8,19 @@
   --background-end-rgb: 255, 255, 255;
 }
 
+h1 {
+  @apply text-4xl font-bold text-gray-900 dark:text-white;
+}
+
+h2 {
+  @apply text-2xl font-bold text-gray-900 dark:text-white;
+}
+
+h3 {
+  @apply text-xl font-bold text-gray-900 dark:text-white;
+}
+
+
 @media (prefers-color-scheme: dark) {
   :root {
     --foreground-rgb: 255, 255, 255;
@@ -25,3 +38,23 @@ body {
     )
     rgb(var(--background-start-rgb));
 }
+
+  /* Form Inputs */
+  .text-input {
+    @apply block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 dark:text-white sm:text-sm;
+  }
+  .onboarding {
+    @apply border-none shadow-lg focus:border-none focus:outline-none;
+  }
+  .text-input-large {
+    @apply block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm;
+  }
+  .label {
+    @apply mb-1 mt-6 block text-sm font-semibold text-gray-900 dark:text-white;
+  }
+  .corner-hint {
+    @apply text-sm text-gray-500 dark:text-white;
+  }
+  .helper-text {
+    @apply mt-2 text-sm text-gray-400 dark:text-gray-400;
+  }
