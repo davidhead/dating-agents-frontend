@@ -6,7 +6,7 @@ import HelperText from "./HelperText"
 
 interface TextInputProps {
   value: any;
-  onInputChange: (value: any) => void;
+  onInputChange?: (value: any) => void;
   description?: string;
   placeholder?: string;
   helperText?: string;
