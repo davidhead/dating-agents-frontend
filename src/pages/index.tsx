@@ -1,14 +1,14 @@
 import Image from "next/image";
 import { Inter } from "next/font/google";
 import TextInput from "../components/TextInput";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import InlineRadios from "../components/GenderOptions";
 import TextInputLarge from "../components/TextInputLarge";
 import Checkboxes from "../components/Checkboxes";
 import Button from "../components/Button";
 import LoadingBar from "../components/LoadingBar";
 import axios from "axios";
-import Results from "../components/Results";
+import ConversationAccordion from "../components/Results";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -36,6 +36,12 @@ export default function Home() {
   const [food, setFood] = useState("");
 
   const [findingLove, setFindingLove] = useState(false);
+
+  const [convos, setConvos] = useState([]);
+
+  useEffect(() => {
+    console.log("convos", convos);
+  }, [convos]);
 
   const onSubmit = async (event) => {
     event.preventDefault();
@@ -71,12 +77,14 @@ export default function Home() {
       const response = await axios.post("/api/FindTheOne", data);
       const results = response.data;
       console.log(results);
+      setConvos(results.result);
+      // console.log("convos", convos);
     } catch (error) {
       console.error(error);
     } finally {
-      setTimeout(() => {
-        setFindingLove(false);
-      }, 45000);
+      // setTimeout(() => {
+      setFindingLove(false);
+      // }, 90000);
     }
   };
 
@@ -89,8 +97,10 @@ export default function Home() {
         <h2>Find The One, Autonomously</h2>
         <h3 className="mt-10">First, Input your Preferences</h3>
         <div className="fixed bottom-0 left-0 h-48 w-full bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:h-auto lg:w-auto lg:bg-none">
-          {findingLove === true ? (
+          {findingLove === true && convos.length === 0 ? (
             <LoadingBar duration_seconds={100} message="Finding The One" />
+          ) : convos.length > 0 && findingLove === false ? (
+            <ConversationAccordion conversations={convos} />
           ) : (
             <form
               className="grid grid-flow-row rounded-md"
@@ -256,7 +266,6 @@ export default function Home() {
               <Button type="submit" label="Find ❤️ The One" />
             </form>
           )}
-          <Results />
         </div>
       </div>
     </main>
